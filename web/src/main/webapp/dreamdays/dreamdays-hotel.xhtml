@@ -1,0 +1,99 @@
+<ui:composition template="../WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="main-head">
+        <h:outputStylesheet>
+            .mapped {
+                background-color: #54a90a !important;
+                background-image: none !important;
+                color: #ffffff !important;
+            }
+        </h:outputStylesheet>
+    </ui:define>
+    <ui:define name="main-body">
+        <div class="ui-g-12 ui-md-12 ui-g-nopad">
+
+            <div class="ui-g-12" style="text-align: center;border: 1px solid;">
+                دیتابیس دریمدیز
+            </div>
+            <h:form  id="frm" prependId="false" enctype="multipart/form-data">
+                <p:growl id="growl" showDetail="true" />
+                <div class="ui-g-12 ui-g-nopad">
+                    <!---->
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="field">
+                            <p:dataTable id="eventsDT"
+                                         var="hotel"
+                                         value="#{dreamDaysHotelViewManageBean.lazyModel}"
+                                         selectionMode="single"
+                                         selection="#{dreamDaysHotelViewManageBean.dreamDaysHotelDto}"
+                                         paginator="true"
+                                         rows="5"
+                                         selectionPageOnly="false"
+                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                         rowsPerPageTemplate="5,10,15,100"
+                                         lazy="true"
+                                         rowKey="#{hotel.hotelId}"
+                                         rowStyleClass="#{dreamDaysHotelViewManageBean.findHotelMappingByHotelCodeAndSupplierId(hotel.hotelId,62) ne null ? 'mapped' : null}"
+                            >
+                                <p:column headerText="id" sortBy="#{hotel.hotelId}" filterBy="#{hotel.hotelId}">
+                                    <p:commandButton value="MAPPING" ajax="true" immediate="true" actionListener="#{dreamDaysHotelViewManageBean.goToMapping(hotel.id)}"/>
+                                </p:column>
+                                <p:column headerText="id" sortBy="#{hotel.id}" filterBy="#{hotel.id}">
+                                    <h:outputText value="#{hotel.id}" />
+                                </p:column>
+                                <p:column headerText="hotel code" sortBy="#{hotel.hotelId}" filterBy="#{hotel.hotelId}">
+                                    <h:outputText value="#{hotel.hotelId}" />
+                                </p:column>
+                                <p:column headerText="hotel Name" sortBy="#{hotel.hotelName}" filterBy="#{hotel.hotelName}">
+                                    <h:outputText value="#{hotel.hotelName}" />
+                                </p:column>
+                                <p:column headerText="latitude" sortBy="#{hotel.latitude}" filterBy="#{hotel.latitude}">
+                                    <h:outputText value="#{hotel.latitude}" />
+                                </p:column>
+                                <p:column headerText="longitude" sortBy="#{hotel.longitude}" filterBy="#{hotel.longitude}">
+                                    <h:outputText value="#{hotel.longitude}" />
+                                </p:column>
+                                <p:column headerText="address" sortBy="#{hotel.address}" filterBy="#{hotel.address}">
+                                    <h:outputText value="#{hotel.address}" />
+                                </p:column>
+                                <p:column headerText="rating" sortBy="#{hotel.rating}" filterBy="#{hotel.rating}">
+                                    <h:outputText value="#{hotel.rating}" />
+                                </p:column>
+                                <p:column headerText="countryId" sortBy="#{hotel.countryId}" filterBy="#{hotel.countryId}">
+                                    <h:outputText value="#{hotel.countryId}" />
+                                </p:column>
+                                <p:column headerText="country Name" sortBy="#{hotel.countryName}" filterBy="#{hotel.countryName}">
+                                    <h:outputText value="#{hotel.countryName}" />
+                                </p:column>
+                                <p:column headerText="cityId" sortBy="#{hotel.cityId}" filterBy="#{hotel.cityId}">
+                                    <h:outputText value="#{hotel.cityId}" />
+                                </p:column>
+                                <p:column headerText="city Name" sortBy="#{hotel.cityName}" filterBy="#{hotel.cityName}">
+                                    <h:outputText value="#{hotel.cityName}" />
+                                </p:column>
+                                <p:column headerText="giataId" sortBy="#{hotel.giataId}" filterBy="#{hotel.giataId}">
+                                    <h:outputText value="#{hotel.giataId}" />
+                                </p:column>
+                                <p:column headerText="hotel Front Image" sortBy="#{hotel.hotelFrontImage}" filterBy="#{hotel.hotelFrontImage}">
+                                    <h:outputText value="#{hotel.hotelFrontImage}" />
+                                </p:column>
+                                <p:column headerText="is RecomondedHotel" sortBy="#{hotel.isRecomondedHotel}" filterBy="#{hotel.isRecomondedHotel}">
+                                    <h:outputText value="#{hotel.isRecomondedHotel}" />
+                                </p:column>
+                                <p:column headerText="isActive" sortBy="#{hotel.isActive}" filterBy="#{hotel.isActive}">
+                                    <h:outputText value="#{hotel.isActive}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>

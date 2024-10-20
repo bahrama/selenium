@@ -1,0 +1,67 @@
+<ui:composition template="../WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="main-body">
+        <div class="ui-g-12 ui-md-12 ui-g-nopad">
+
+            <div class="ui-g-12" style="text-align: center;border: 1px solid;">
+                دیتابیس شهر
+            </div>
+            <h:form id="form" prependId="false">
+                <p:growl id="growl" showDetail="true" />
+                <div class="ui-g-12 ui-g-nopad">
+                    <!---->
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="field">
+                            <p:dataTable id="eventsDT"
+                                         var="city"
+                                         value="#{cityViewManagaBean.lazyModel}"
+                                         selectionMode="single"
+                                         selection="#{cityViewManagaBean.cityDto}"
+                                         paginator="true"
+                                         rows="5"
+                                         selectionPageOnly="false"
+                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         lazy="true"
+                                         rowKey="#{city.id}"
+                            >
+                                <p:column headerText="id" sortBy="#{city.id}" filterBy="#{city.id}">
+                                    <h:outputText value="#{city.id}" />
+                                </p:column>
+                                <p:column headerText="auto fill Text" sortBy="#{city.autofillText}" filterBy="#{city.autofillText}">
+                                    <h:outputText value="#{city.autofillText}" />
+                                </p:column>
+                                <p:column headerText="city Name" sortBy="#{city.cityName}" filterBy="#{city.cityName}">
+                                    <h:outputText value="#{city.cityName}" />
+                                </p:column>
+                                <p:column headerText="city Persian Name" sortBy="#{city.cityPersianName}" filterBy="#{city.cityPersianName}">
+                                    <h:outputText value="#{city.cityPersianName}" />
+                                </p:column>
+                                <p:column headerText="city IataCode" sortBy="#{city.cityIataCode}" filterBy="#{city.cityIataCode}">
+                                    <h:outputText value="#{city.cityIataCode}" />
+                                </p:column>
+
+                                <p:column headerText="country Code" sortBy="#{city.countryCode}" filterBy="#{city.countryCode}">
+                                    <h:outputText value="#{city.countryCode}" />
+                                </p:column>
+                                <p:column headerText="country Name" sortBy="#{city.countryName}" filterBy="#{city.countryName}">
+                                    <h:outputText value="#{city.countryName}" />
+                                </p:column>
+                                <p:column headerText="giata Code" sortBy="#{city.giataCode}" filterBy="#{city.giataCode}">
+                                    <h:outputText value="#{city.giataCode}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>

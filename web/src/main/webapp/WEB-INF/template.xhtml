@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet>
+
+    </h:outputStylesheet>
+    <ui:insert name="main-head"/>
+</h:head>
+<h:body>
+    <f:view>
+        <p:outputPanel>
+            <div class="card">
+                <div class="ui-g">
+                    <div class="ui-g-12 hdr">
+                        <p:megaMenu orientation="horizontal" autoDisplay="false">
+                            <f:facet name="start">
+                                <p:graphicImage name="images/primefaces-logo.svg" library="showcase" width="150"/>
+                            </f:facet>
+                            <p:submenu label="هتل">
+                                <p:column>
+                                    <p:submenu label="هتل">
+                                        <p:menuitem value="کل هتل ها" immediate="true" actionListener="#{templateViewManageBean.goToHotelPage()}"/>
+                                        <p:menuitem value="افزودن هتل جدید" immediate="true"  actionListener="#{templateViewManageBean.goToAddHotelPage()}"/>
+                                        <p:menuitem value="چنلید" immediate="true"  actionListener="#{templateViewManageBean.goToChanneleadHotel()}"/>
+                                        <p:menuitem value="دریمدیز" immediate="true"  actionListener="#{templateViewManageBean.goToDreamDaysHotel()}"/>
+                                        <p:menuitem value="اسنپ تریپ" immediate="true"  actionListener="#{templateViewManageBean.goToSnappTripHotel()}"/>
+                                        <p:menuitem value="ایران هتل" immediate="true"  actionListener="#{templateViewManageBean.getGoToIranHotel()}"/>
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+                            <p:submenu label="شهر">
+
+                                <p:column>
+                                    <p:submenu label="شهر">
+                                        <p:menuitem value="شهر" immediate="true" actionListener="#{templateViewManageBean.goToCity()}"/>
+                                        <p:menuitem value="افزودن شهر" immediate="true" actionListener="#{templateViewManageBean.goToCityForm()}"/>
+                                        <p:menuitem value="شهر کالوک" immediate="true" actionListener="#{templateViewManageBean.goToCullucCity()}"/>
+                                        <p:menuitem value="شهر دریم دیز" immediate="true" actionListener="#{templateViewManageBean.goToDreamDaysCity()}"/>
+                                        <p:menuitem value="شهر اسنپ تریپ" immediate="true" actionListener="#{templateViewManageBean.getGoToSnappTripCity()}"/>
+                                        <p:menuitem value="شهر ایران هتل" immediate="true" actionListener="#{templateViewManageBean.getGoToIranHotelCity()}"/>
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+                            <p:submenu label="مپینگ">
+
+                                <p:column>
+                                    <p:submenu label="مپینگ">
+                                        <p:menuitem value="مپینگ"/>
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+
+                            <p:submenu label="booking.com" icon="pi pi-fw pi-calendar">
+                                <p:column>
+                                    <p:submenu label="بوکینگ">
+                                        <p:menuitem value="بوکینگ" immediate="true" actionListener="#{templateViewManageBean.goToBookingCom()}"/>
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+                        </p:megaMenu>
+                    </div>
+                    <ui:insert name="main-body"/>
+                    <div class="ui-g-12" style="text-align: center;
+                                                border: 1px solid;">
+                        پنل مدیریت دیتابیس طاهاگشت
+                    </div>
+                </div>
+            </div>
+        </p:outputPanel>
+    </f:view>
+</h:body>
+</html>
